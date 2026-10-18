@@ -11,3 +11,17 @@ bash scripts/setup-claude-login.sh YOUR-VPS-IP [ssh-user]
 ```
 
 `ssh-user` defaults to `root`.
+
+## Uninstall
+
+Removes the Paperclip service, its Postgres container and data, all Paperclip
+files and the Caddy block. Saves a final backup to `/root` first. Node, Docker,
+Caddy, n8n, Bridge and the `bridge` user's Claude/Codex logins are left alone.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Radverth/paperclip-VPS-install/main/uninstall-paperclip.sh -o uninstall-paperclip.sh
+sudo DRY_RUN=1 bash uninstall-paperclip.sh   # preview
+sudo bash uninstall-paperclip.sh             # remove
+```
+
+Skip the final backup with `sudo NO_BACKUP=1 bash uninstall-paperclip.sh`.
